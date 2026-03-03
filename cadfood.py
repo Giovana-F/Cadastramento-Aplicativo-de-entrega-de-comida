@@ -19,22 +19,39 @@ def finalizar_app():
     os.system('cls') #limpa a tela do terminal, para deixar mais organizado
     print("Finalizando o app...")
 
+ 
+
+
+def opcao_invalida():
+     print("Opção inválida. Tente novamente.\n")
+     input("Pressione uma tecla para voltar ao menu principal...")
+     main() #chama a função novamente para que o usuário possa escolher uma opção válida
+
+
+
 def escolher_opcao():
-    opcao_escolhida =int(input('Escolha uma opcao: ')) #o input ret uma string. Por isso a utilização do int, assim que o usuári inseri o valor, é feito a conversão
-    # opcao_escolhida = int(opcao_escolhida) #outra forma de fazer a conversão, mas nesse caso, o input ficaria sem o int, e depois seria feita a conversão. 
-    # A vantagem de colocar o int direto no input é que já faz a conversão na hora, evitando erros futuros caso esqueça de converter depois.
+    # O try é utilizado para tentar executar um código
+    try:
+        opcao_escolhida =int(input('Escolha uma opcao: ')) #o input ret uma string. Por isso a utilização do int, assim que o usuári inseri o valor, é feito a conversão
+        # opcao_escolhida = int(opcao_escolhida) #outra forma de fazer a conversão, mas nesse caso, o input ficaria sem o int, e depois seria feita a conversão. 
+        # A vantagem de colocar o int direto no input é que já faz a conversão na hora, evitando erros futuros caso esqueça de converter depois.
 
 
-    if opcao_escolhida == 1:
-        print("Cadastrar Restaurante")
-    elif opcao_escolhida == 2:
-        print("Listar Restaurante")
-    elif opcao_escolhida == 3:
-        print("Ativar Restaurante")
-    else:
-        finalizar_app()
+        if opcao_escolhida == 1:
+            print("Cadastrar Restaurante")
+        elif opcao_escolhida == 2:
+            print("Listar Restaurante")
+        elif opcao_escolhida == 3:
+            print("Ativar Restaurante")
+        elif opcao_escolhida == 4:
+            finalizar_app()
+        else:
+            opcao_invalida()
+    except:
+        opcao_invalida() #caso o usuário insira um valor que não seja um número inteiro
 
 def main():
+    os.system('cls')
     exibir_nome_do_progrma()
     exibir_opcoes()
     escolher_opcao()
